@@ -1,8 +1,30 @@
-﻿using System.IO;
-using System.Runtime.CompilerServices;
+﻿using System.Text.RegularExpressions;
 
-static class Day1
+static partial class Day1
 {
+    enum NumberDigit
+    {
+        one = 1, two = 2, three = 3, four = 4, five = 5, six = 6, seven = 7, eight = 8, nine = 9,
+    }
+
+    private static string[] ReadAsArray()
+    {
+        List<string> lines = [];
+
+        StreamReader reader = new(@"..\..\..\..\inputs\Day1.txt");
+
+        while (!reader.EndOfStream)
+        {
+            string? line = reader.ReadLine();
+            if (line != null)
+            {
+                lines.Add(line);
+            }
+        }
+
+        return [.. lines];
+    }
+
     public static int ExtractDigits(string input)
     {
         char? first = null;
@@ -14,10 +36,7 @@ static class Day1
             {
                 continue;
             }
-            if (first == null)
-            {
-                first = c;
-            }
+            first ??= c;
             last = c;
         }
 
@@ -31,20 +50,57 @@ static class Day1
         throw new Exception("Could not extract digits from input");
     }
 
-    public static int Count()
+    public static int CountDigits()
     {
         int count = 0;
-        string? line;
-
-        StreamReader reader = new StreamReader(@"..\..\..\..\inputs\Day1.txt");
-
-        while (!reader.EndOfStream)
+        string[] inputs = ReadAsArray();
+        foreach (string input in inputs)
         {
-            line = reader.ReadLine();
-            if (line != null)
+            count += ExtractDigits(input);
+        }
+
+        return count;
+    }
+
+    [GeneratedRegex(@"(?=([1-9]|one|two|three|four|five|six|seven|eight|nine))")]
+    private static partial Regex NumberMatcher();
+
+    public static int ExtractNumbers(string input)
+    {
+        Regex matcher = NumberMatcher();
+
+        MatchCollection matches = matcher.Matches(input);
+
+        string? first = matches[0].Groups[1]?.ToString();
+        string? last = matches[^1].Groups[1]?.ToString();
+
+        if (first != null && last != null)
+        {
+            if (Enum.IsDefined(typeof(NumberDigit), first.ToLower()))
             {
-                count += ExtractDigits(line);
+                int NumberAsDigit = (int)(NumberDigit)Enum.Parse(typeof(NumberDigit), first);
+                first = NumberAsDigit.ToString();
             }
+            if (Enum.IsDefined(typeof(NumberDigit), last.ToLower()))
+            {
+                int NumberAsDigit = (int)(NumberDigit)Enum.Parse(typeof(NumberDigit), last);
+                last = NumberAsDigit.ToString();
+            }
+            string res = Int32.Parse(first).ToString() + Int32.Parse(last).ToString();
+
+            return Int32.Parse(res);
+        }
+
+        throw new Exception("Could not extract numbers from input");
+    }
+
+    public static int CountNumbers()
+    {
+        int count = 0;
+        string[] inputs = ReadAsArray();
+        foreach (string input in inputs)
+        {
+            count += ExtractNumbers(input);
         }
 
         return count;
@@ -53,6 +109,7 @@ static class Day1
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 1!");
-        Console.WriteLine("My result is " + Count());
+        Console.WriteLine("My Part 1 result is " + CountDigits());
+        Console.WriteLine("My Part 2 result is " + CountNumbers());
     }
 }
