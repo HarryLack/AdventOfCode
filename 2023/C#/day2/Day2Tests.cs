@@ -18,6 +18,8 @@ namespace Day2Tests
 
         readonly static bool[] validityResults = [true, true, false, false, true];
 
+        readonly static int[] powerResults = [48, 12, 1560, 630, 36];
+
         [TestMethod]
         public void GetsCorrectAnswer()
         {
@@ -44,6 +46,18 @@ namespace Day2Tests
                 bool isValid = Day2.IsValidGame(game);
                 Assert.AreEqual(isValid, validityResults[i]);
             }
+        }
+
+        [TestMethod]
+        public void CalculatesPowerCorrectly()
+        {
+            int count = 0;
+            for (int i = 0; i < arrayedInput.Length; i++)
+            {
+                Game game = Day2.ParseGame(arrayedInput[i]);
+                count += Day2.CalcPower(game);
+            }
+            Assert.AreEqual(count, 2286);
         }
     }
 }

@@ -103,10 +103,30 @@ static partial class Day2
         return count;
     }
 
+    public static int CalcPower(Game game)
+    {
+        return game.Cubes.red * game.Cubes.green * game.Cubes.blue;
+    }
+
+    static int Part2()
+    {
+        int count = 0;
+        string[] inputs = Helpers.ReadAsArray(@"..\..\..\..\inputs\day2.txt");
+
+        foreach (string line in inputs)
+        {
+            Game game = Day2.ParseGame(line);
+            count += CalcPower(game);
+        }
+
+        return count;
+    }
+
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 2!");
         Console.WriteLine("My Part 1 result is " + Part1());
+        Console.WriteLine("My Part 2 result is " + Part2());
     }
 
 }
