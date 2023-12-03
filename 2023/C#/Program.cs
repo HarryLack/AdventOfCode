@@ -1,7 +1,8 @@
 ﻿internal class Program
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
-        Day1.Answer();
+        //Day1.Answer();
+        Day2.Answer();
     }
 }
