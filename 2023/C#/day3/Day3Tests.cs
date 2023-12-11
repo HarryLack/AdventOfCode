@@ -19,15 +19,13 @@ namespace Day3Tests
             "......755.",
             "...$.*....",
             ".664.598..",
-            //Additional inputs
-            "..........",
-            "..........",
-            "..........",
         ];
 
         readonly static int[] allParts = [467, 114, 35, 633, 617, 58, 592, 755, 664, 598];
         readonly static int[] validParts = [467, 35, 633, 617, 592, 755, 664, 598];
-        readonly static int result = 4361;
+        readonly static int part1Result = 4361;
+
+        readonly static int part2Result = 467835;
 
         [TestMethod]
         public void GetsPartsCorrectly()
@@ -52,9 +50,14 @@ namespace Day3Tests
         }
 
         [TestMethod]
-        public void GetsCorrectAnswer()
+        public void GetsCorrectPart1()
         {
-            Assert.AreEqual(Day3.Part1(arrayedTestInput), result);
+            Assert.AreEqual(Day3.Part1(arrayedTestInput), part1Result);
+        }
+
+        public void GetsCorrectPart2()
+        {
+            Assert.AreEqual(Day3.Part2(arrayedTestInput), part2Result);
         }
     }
 }
