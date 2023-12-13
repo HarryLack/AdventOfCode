@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Day3Tests
+namespace Day4Tests
 {
 
     [TestClass]
@@ -20,6 +20,7 @@ namespace Day3Tests
         readonly static int[] allParts = [467, 114, 35, 633, 617, 58, 592, 755, 664, 598];
         readonly static int[] validParts = [467, 35, 633, 617, 592, 755, 664, 598];
         readonly static int part1Result = 13;
+        readonly static int part2Result = 30;
 
         [TestMethod]
         public void GetsCorrectPart1()
@@ -27,9 +28,10 @@ namespace Day3Tests
             Assert.AreEqual(Day4.Part1(arrayedTestInput), part1Result);
         }
 
+        [TestMethod]
         public void GetsCorrectPart2()
         {
-
+            Assert.AreEqual(Day4.Part2(arrayedTestInput), part2Result);
         }
     }
 }
