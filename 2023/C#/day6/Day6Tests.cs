@@ -13,7 +13,7 @@ namespace Day6Tests
         ];
 
         readonly static int part1Result = 288;
-        readonly static int part2Result = 46;
+        readonly static int part2Result = 71503;
 
         [TestMethod]
         public void GetsCorrectPart1()
@@ -21,10 +21,10 @@ namespace Day6Tests
             Assert.AreEqual(Day6.Part1(arrayedTestInput), part1Result);
         }
 
-        //[TestMethod]
-        //public void GetsCorrectPart2()
-        //{
-        //    Assert.AreEqual(Day6.Part2(arrayedTestInput), part2Result);
-        //}
+        [TestMethod]
+        public void GetsCorrectPart2()
+        {
+            Assert.AreEqual(Day6.Part2(arrayedTestInput), part2Result);
+        }
     }
 }
