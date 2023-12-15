@@ -46,7 +46,7 @@ namespace Day5Tests
 
         readonly static int[] locations = [82, 43, 86, 35];
         readonly static uint part1Result = 35;
-        //readonly static int part2Result = 30
+        readonly static uint part2Result = 46;
 
         [TestMethod]
         public void GetsCorrectPart1()
@@ -57,7 +57,7 @@ namespace Day5Tests
         [TestMethod]
         public void GetsCorrectPart2()
         {
-            //Assert.AreEqual(Day5.Part2(arrayedTestInput), part2Result);
+            Assert.AreEqual(Day5.Part2(arrayedTestInput), part2Result);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using RangeMaps = System.Collections.Generic.Dictionary<string, Range[]>;
+﻿using Microsoft.VisualStudio.TestPlatform.Utilities;
+using RangeMaps = System.Collections.Generic.Dictionary<string, Range[]>;
 readonly struct Range(uint Start, uint Source, uint Length)
 {
     private readonly uint Start = Start;
@@ -108,53 +109,79 @@ static partial class Day5
 
         return count;
     }
-    public static int Part2(string[] input)
+
+    public static Tuple<uint, uint>[] ExtractSeedRanges(uint[] seeds)
     {
-        return 0;
+        List<Tuple<uint, uint>> pairs = [];
+
+        uint? start = null;
+        uint? range = null;
+
+        foreach (var val in seeds)
+        {
+            if (start == null)
+            {
+                start = val;
+            }
+            else if (range == null)
+            {
+                range = val;
+            }
+
+            if (start != null && range != null)
+            {
+                pairs.Add(new((uint)start, (uint)range));
+                start = null;
+                range = null;
+            }
+        }
+
+        return [.. pairs];
+    }
+    static uint ProcessPair(Tuple<uint, uint> pair, RangeMaps maps)
+    {
+        uint count = uint.MaxValue;
+        for (uint i = pair.Item1; i < pair.Item1 + pair.Item2; i++)
+        {
+            uint res = MapSeed(i, maps);
+            if (res < count)
+            {
+                count = res;
+            }
+        }
+        return count;
     }
 
-    readonly static string[] arrayedTestInput = [
-        "seeds: 79 14 55 13",
-        "",
-        "seed-to-soil map:",
-        "50 98 2",
-        "52 50 48",
-        "",
-        "soil-to-fertilizer map:",
-        "0 15 37",
-        "37 52 2",
-        "39 0 15",
-        "",
-        "fertilizer-to-water map:",
-        "49 53 8",
-        "0 11 42",
-        "42 0 7",
-        "57 7 4",
-        "",
-        "water-to-light map:",
-        "88 18 7",
-        "18 25 70",
-        "",
-        "light-to-temperature map:",
-        "45 77 23",
-        "81 45 19",
-        "68 64 13",
-        "",
-        "temperature-to-humidity map:",
-        "0 69 1",
-        "1 0 69",
-        "",
-        "humidity-to-location map:",
-        "60 56 37",
-        "56 93 4"
-    ];
+    public static uint Part2(string[] input)
+    {
 
+        uint count = uint.MaxValue;
+        uint[] seeds = ExtractSeeds(input[0]);
+        RangeMaps maps = ExtractMaps(input.Skip(1));
+        var pairs = ExtractSeedRanges(seeds);
+
+        int prog = 0;
+
+        foreach (var pair in pairs)
+        {
+            Console.WriteLine($"{prog}/{pairs.Length}");
+            uint res = ProcessPair(pair, maps);
+            if (res < count)
+            {
+                count = res;
+            }
+            prog++;
+
+        }
+
+        return count;
+    }
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 5!");
         string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\day5.txt");
         Console.WriteLine("My Part 1 result is " + Part1(input));
-        Console.WriteLine("My Part 2 result is " + Part2(arrayedTestInput));
+        Console.WriteLine("My Part 2 result is " + Part2(input));
     }
 
 }
