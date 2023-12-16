@@ -55,7 +55,7 @@ namespace Day7Tests
         [TestMethod]
         public void Part2Reddit()
         {
-            Assert.AreEqual(Day7.Part1(arrayedRedditTestCase), 6839);
+            Assert.AreEqual(Day7.Part2(arrayedRedditTestCase), 6839);
         }
     }
 }

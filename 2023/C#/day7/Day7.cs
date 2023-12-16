@@ -4,6 +4,10 @@ enum CamelCard
 {
     T = 10, J = 11, Q = 12, K = 13, A = 14
 }
+enum JokerCard
+{
+    T = 10, J = 1, Q = 12, K = 13, A = 14
+}
 enum HandType
 {
     HighCard, Pair, TwoPair, ThreeKind, FullHouse, FourKind, FiveKind
@@ -11,8 +15,6 @@ enum HandType
 
 static partial class Day7
 {
-    readonly static string[] arrayedTestInput = ["32T3K 765", "T55J5 684", "KK677 28", "KTJJT 220", "QQQJA 483"];
-
     static CamelGame[] ExtractGames(string[] input)
     {
         List<CamelGame> games = [];
@@ -65,10 +67,8 @@ static partial class Day7
         return input.All(c => c == input[0]);
     }
 
-    static HandType RateHand(CamelGame game)
+    static HandType RateHand(string hand)
     {
-        string hand = game.hand;
-
         if (IsFiveKind(hand))
         {
             return HandType.FiveKind;
@@ -107,6 +107,58 @@ static partial class Day7
         throw new Exception("Invalid hand");
     }
 
+    static HandType RateJokerHand(string hand)
+    {
+        int jokerCount = hand.Where(c => c == 'J').ToArray().Length;
+        HandType type = RateHand(hand);
+        if (type == HandType.FiveKind || jokerCount == 0 || jokerCount == 5)
+        {
+            return type;
+        }
+
+        string baseHand = hand.Replace("J", "");
+        HandType baseType = RateHand(baseHand);
+
+        return baseType switch
+        {
+            HandType.HighCard => jokerCount switch
+            {
+                1 => HandType.Pair,
+                2 => HandType.ThreeKind,
+                3 => HandType.FourKind,
+                4 => HandType.FiveKind,
+                _ => throw new Exception("Invalid hand")
+            }
+            ,
+            HandType.Pair => jokerCount switch
+            {
+                1 => HandType.ThreeKind,
+                2 => HandType.FourKind,
+                3 => HandType.FiveKind,
+                _ => throw new Exception("Invalid hand")
+            },
+            HandType.TwoPair => jokerCount switch
+            {
+                1 => HandType.FullHouse,
+                _ => throw new Exception("Invalid hand")
+            },
+            HandType.ThreeKind => jokerCount switch
+            {
+                1 => HandType.FourKind,
+                2 => HandType.FiveKind,
+                _ => throw new Exception("Invalid hand")
+            },
+            HandType.FullHouse => HandType.FullHouse,
+            HandType.FourKind => jokerCount switch
+            {
+                1 => HandType.FiveKind,
+                _ => throw new Exception("Invalid hand")
+            },
+            HandType.FiveKind => HandType.FiveKind,
+            _ => throw new Exception("Invalid hand")
+        };
+    }
+
     static int TieBreak(CamelGame a, CamelGame b)
     {
         foreach (var (First, Second) in a.hand.Zip(b.hand))
@@ -122,6 +174,21 @@ static partial class Day7
         return 0;
     }
 
+    static int TieBreakJoker(CamelGame a, CamelGame b)
+    {
+        foreach (var (First, Second) in a.hand.Zip(b.hand))
+        {
+            if (First != Second)
+            {
+                CamelCard val1 = (CamelCard)Enum.Parse(typeof(JokerCard), First.ToString());
+                CamelCard val2 = (CamelCard)Enum.Parse(typeof(JokerCard), Second.ToString());
+                return val1 > val2 ? 1 : -1;
+            }
+        }
+
+        return 0;
+    }
+
     public static int Part1(string[] input)
     {
         int count = 0;
@@ -129,8 +196,8 @@ static partial class Day7
 
         Array.Sort(games, (a, b) =>
         {
-            HandType aType = RateHand(a);
-            HandType bType = RateHand(b);
+            HandType aType = RateHand(a.hand);
+            HandType bType = RateHand(b.hand);
 
             if (aType == bType)
             {
@@ -150,16 +217,36 @@ static partial class Day7
     }
     public static int Part2(string[] input)
     {
-        int? count = null;
+        int count = 0;
+        CamelGame[] games = ExtractGames(input);
 
-        return count ?? 0;
+        Array.Sort(games, (a, b) =>
+        {
+            HandType aType = RateJokerHand(a.hand);
+            HandType bType = RateJokerHand(b.hand);
+
+            if (aType == bType)
+            {
+                return TieBreakJoker(a, b);
+            }
+
+            var res = aType > bType;
+            return aType > bType ? 1 : -1;
+        });
+
+        for (int i = 0; i < games.Length; i++)
+        {
+            count += (games[i].bid) * (i + 1);
+        }
+
+        return count;
     }
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 7!");
         string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\Day7.txt");
         Console.WriteLine("My Part 1 result is " + Part1(input));
-        Console.WriteLine("My Part 2 result is " + Part2(arrayedTestInput));
+        Console.WriteLine("My Part 2 result is " + Part2(input));
     }
 
 }
