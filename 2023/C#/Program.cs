@@ -7,6 +7,7 @@
         //Day3.Answer();
         //Day4.Answer();
         //Day5.Answer();
-        Day6.Answer();
+        //Day6.Answer();
+        Day7.Answer();
     }
 }
