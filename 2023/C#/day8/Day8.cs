@@ -1,4 +1,7 @@
-﻿static partial class Day8
+﻿using System.Diagnostics;
+using CamelMap = System.Collections.Generic.Dictionary<string, (string L, string R)>;
+
+static partial class Day8
 {
     readonly static string[] arrayedTestInput = [
         "RL",
@@ -11,10 +14,22 @@
         "GGG = (GGG, GGG)",
         "ZZZ = (ZZZ, ZZZ)"
     ];
+    readonly static string[] arrayedTestInputPart2 = [
+        "LR",
+        "",
+        "11A = (11B, XXX)",
+        "11B = (XXX, 11Z)",
+        "11Z = (11B, XXX)",
+        "22A = (22B, XXX)",
+        "22B = (22C, 22C)",
+        "22C = (22Z, 22Z)",
+        "22Z = (22B, 22B)",
+        "XXX = (XXX, XXX)"
+    ];
 
-    static Dictionary<string, (string L, string R)> ParseNodes(string[] input)
+    static CamelMap ParseNodes(string[] input)
     {
-        Dictionary<string, (string L, string R)> map = [];
+        CamelMap map = [];
 
         foreach (string line in input)
         {
@@ -24,6 +39,17 @@
         }
 
         return map;
+    }
+    static string DoStep(char instruction, CamelMap map, string current)
+    {
+        if (instruction == 'L')
+        {
+            return map[current].L;
+        }
+        else
+        {
+            return map[current].R;
+        }
     }
 
     public static int Part1(string[] input)
@@ -39,26 +65,84 @@
         while (current != end)
         {
             char instruction = instructions[count % len];
-            if (instruction == 'L')
-            {
-                current = map[current].L;
-            }
-            else
-            {
-                current = map[current].R;
-            }
-
+            current = DoStep(instruction, map, current);
             count++;
         }
-
         return count;
     }
 
-    public static int Part2(string[] input)
+    static string[] FindStarts(string[] nodes)
     {
-        int? count = null;
+        List<string> starts = [];
 
-        return count ?? 0;
+        foreach (var node in nodes)
+        {
+            if (node.EndsWith('A'))
+            {
+                starts.Add(node);
+            }
+        }
+
+        return [.. starts];
+    }
+
+    static (int entry, int loopSize) FindLoop(char[] instructions, CamelMap map, string startNode)
+    {
+        int count = 0;
+        int? entry = null;
+        int loop = 0;
+        int len = instructions.Length;
+        string current = startNode;
+        bool done = false;
+        string? end = null;
+
+        while (!done)
+        {
+            char instruction = instructions[count % len];
+            current = DoStep(instruction, map, current);
+            count++;
+
+            if (entry != null)
+            {
+                loop++;
+                if (current == end)
+                {
+                    done = true;
+                }
+            }
+
+            if (current.EndsWith('Z'))
+            {
+                entry ??= count;
+                end ??= current;
+            }
+        }
+
+        if (entry == null || end == null)
+        {
+            throw new Exception("Error finding loop");
+        }
+
+        return ((int)entry, loopSize: loop);
+    }
+
+    public static ulong Part2(string[] input)
+    {
+        ulong count = 0;
+        char[] instructions = [.. input[0].Trim()];
+        int len = instructions.Length;
+        var map = ParseNodes(input.Skip(2).ToArray());
+        string[] nodes = FindStarts([.. map.Keys]);
+
+        List<(int entry, int loopSize)> loops = [];
+
+        foreach (var node in nodes)
+        {
+            loops.Add(FindLoop(instructions, map, node));
+        }
+
+        count = Helpers.LCM(loops.Select(loop => (ulong)loop.loopSize).ToArray());
+        return count;
     }
     public static void Answer()
     {

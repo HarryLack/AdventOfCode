@@ -28,9 +28,22 @@ namespace Day8Tests
             "ZZZ = (ZZZ, ZZZ)"
         ];
 
+        readonly static string[] arrayedTestInputPart2 = [
+            "LR",
+            "",
+            "11A = (11B, XXX)",
+            "11B = (XXX, 11Z)",
+            "11Z = (11B, XXX)",
+            "22A = (22B, XXX)",
+            "22B = (22C, 22C)",
+            "22C = (22Z, 22Z)",
+            "22Z = (22B, 22B)",
+            "XXX = (XXX, XXX)"
+        ];
+
         readonly static int part1Result1 = 2;
         readonly static int part1Result2 = 6;
-        readonly static int part2Result = 0;
+        readonly static int part2Result = 6;
 
         [TestMethod]
         public void GetsCorrectPart1()
@@ -42,7 +55,7 @@ namespace Day8Tests
         [TestMethod]
         public void GetsCorrectPart2()
         {
-            Assert.AreEqual(Day8.Part2(arrayedTestInput1), part2Result);
+            Assert.AreEqual(Day8.Part2(arrayedTestInputPart2), (ulong)part2Result);
         }
     }
 }
