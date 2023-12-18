@@ -4,15 +4,15 @@
     readonly static string[] arrayedTestInput = [];
     public static int Part1(string[] input)
     {
-        int? count = null;
+        int count = 0;
 
-        return count ?? 0;
+        return count;
     }
     public static int Part2(string[] input)
     {
-        int? count = null;
+        int count = 0;
 
-        return count ?? 0;
+        return count;
     }
     public static void Answer()
     {
