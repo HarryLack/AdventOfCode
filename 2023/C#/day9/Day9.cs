@@ -46,6 +46,27 @@
         return history.Last().Last();
     }
 
+    static int ExtrapolateValueBackwards(List<List<int>> input)
+    {
+        var history = input;
+        history.Reverse();
+
+        _ = history[0].Prepend(0);
+
+        for (int i = 0; (i + 1) < history.Count; i++)
+        {
+            var parentRow = history[i + 1];
+
+            int current = history[i][0];
+            int rightParent = parentRow[0];
+
+            history[i + 1] = parentRow.Prepend(rightParent - current).ToList();
+        }
+
+        return history.Last()[0];
+    }
+
+
     public static int Part1(string[] input)
     {
         int count = 0;
@@ -60,6 +81,11 @@
     public static int Part2(string[] input)
     {
         int count = 0;
+
+        foreach (var item in input)
+        {
+            count += ExtrapolateValueBackwards(CreateHistory(item));
+        }
 
         return count;
     }

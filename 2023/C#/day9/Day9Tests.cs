@@ -10,7 +10,7 @@ namespace Day9Tests
         readonly static string[] arrayedTestInput = ["0 3 6 9 12 15", "1 3 6 10 15 21", "10 13 16 21 30 45"];
 
         readonly static int part1Result = 114;
-        readonly static int part2Result = 0;
+        readonly static int part2Result = 2;
 
         [TestMethod]
         public void GetsCorrectPart1()
