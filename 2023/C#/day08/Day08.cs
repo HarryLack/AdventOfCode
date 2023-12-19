@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using CamelMap = System.Collections.Generic.Dictionary<string, (string L, string R)>;
 
-static partial class Day8
+static partial class Day08
 {
     readonly static string[] arrayedTestInput = [
         "RL",

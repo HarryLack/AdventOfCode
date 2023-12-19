@@ -23,7 +23,7 @@ struct Scratchcard
     }
 }
 
-static partial class Day4
+static partial class Day04
 {
     [GeneratedRegex("[0-9]+")]
     private static partial Regex NumberMatcher();

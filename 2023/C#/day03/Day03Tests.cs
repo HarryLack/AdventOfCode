@@ -4,7 +4,7 @@ namespace Day3Tests
 {
 
     [TestClass]
-    public class Day3Tests
+    public class Day03Tests
     {
         readonly static string testInput = "467..114..\r\n...*......\r\n..35..633.\r\n......#...\r\n617*......\r\n.....+.58.\r\n..592.....\r\n......755.\r\n...$.*....\r\n.664.598..";
 
@@ -30,7 +30,7 @@ namespace Day3Tests
         [TestMethod]
         public void GetsPartsCorrectly()
         {
-            foreach (var part in Day3.FindPartNumbers(arrayedTestInput))
+            foreach (var part in Day03.FindPartNumbers(arrayedTestInput))
             {
                 Console.WriteLine(part.PartID);
                 Assert.IsTrue(allParts.Contains(part.PartID));
@@ -40,9 +40,9 @@ namespace Day3Tests
         [TestMethod]
         public void ValidatesPartsCorrectly()
         {
-            var parts = Day3.FindPartNumbers(arrayedTestInput);
-            var symbols = Day3.FindSymbols(arrayedTestInput);
-            foreach (var part in Day3.FindValidParts(parts, symbols))
+            var parts = Day03.FindPartNumbers(arrayedTestInput);
+            var symbols = Day03.FindSymbols(arrayedTestInput);
+            foreach (var part in Day03.FindValidParts(parts, symbols))
             {
                 Console.WriteLine(part.PartID);
                 Assert.IsTrue(validParts.Contains(part.PartID));
@@ -52,12 +52,12 @@ namespace Day3Tests
         [TestMethod]
         public void GetsCorrectPart1()
         {
-            Assert.AreEqual(Day3.Part1(arrayedTestInput), part1Result);
+            Assert.AreEqual(Day03.Part1(arrayedTestInput), part1Result);
         }
 
         public void GetsCorrectPart2()
         {
-            Assert.AreEqual(Day3.Part2(arrayedTestInput), part2Result);
+            Assert.AreEqual(Day03.Part2(arrayedTestInput), part2Result);
         }
     }
 }

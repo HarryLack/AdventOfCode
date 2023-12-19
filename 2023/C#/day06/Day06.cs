@@ -1,6 +1,6 @@
 ﻿using IRace = (long time, long distance);
 
-static partial class Day6
+static partial class Day06
 {
 
     readonly static string[] arrayedTestInput = [

@@ -16,7 +16,7 @@ struct PartNumber
     }
 }
 
-static partial class Day3
+static partial class Day03
 {
     static bool IsDigit(string input)
     {

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-static partial class Day1
+static partial class Day01
 {
     enum NumberDigit
     {

@@ -4,7 +4,7 @@ namespace Day8Tests
 {
 
     [TestClass]
-    public class Day8Tests
+    public class Day08Tests
     {
         readonly static string testInput1 = "RL\r\n\r\nAAA = (BBB, CCC)\r\nBBB = (DDD, EEE)\r\nCCC = (ZZZ, GGG)\r\nDDD = (DDD, DDD)\r\nEEE = (EEE, EEE)\r\nGGG = (GGG, GGG)\r\nZZZ = (ZZZ, ZZZ)";
         readonly static string[] arrayedTestInput1 = [
@@ -48,14 +48,14 @@ namespace Day8Tests
         [TestMethod]
         public void GetsCorrectPart1()
         {
-            Assert.AreEqual(Day8.Part1(arrayedTestInput1), part1Result1);
-            Assert.AreEqual(Day8.Part1(arrayedTestInput2), part1Result2);
+            Assert.AreEqual(Day08.Part1(arrayedTestInput1), part1Result1);
+            Assert.AreEqual(Day08.Part1(arrayedTestInput2), part1Result2);
         }
 
         [TestMethod]
         public void GetsCorrectPart2()
         {
-            Assert.AreEqual(Day8.Part2(arrayedTestInputPart2), (ulong)part2Result);
+            Assert.AreEqual(Day08.Part2(arrayedTestInputPart2), (ulong)part2Result);
         }
     }
 }

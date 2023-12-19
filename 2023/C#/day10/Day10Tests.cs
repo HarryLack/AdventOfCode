@@ -1,6 +1,6 @@
  using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DayNTests
+namespace Day10Tests
 {
 
     [TestClass]
@@ -15,13 +15,13 @@ namespace DayNTests
         [TestMethod]
         public void GetsCorrectPart1()
         {
-            Assert.AreEqual(DayN.Part1(arrayedTestInput), part1Result);
+            Assert.AreEqual(Day10.Part1(arrayedTestInput), part1Result);
         }
 
         [TestMethod]
         public void GetsCorrectPart2()
         {
-            Assert.AreEqual(DayN.Part2(arrayedTestInput), part2Result);
+            Assert.AreEqual(Day10.Part2(arrayedTestInput), part2Result);
         }
     }
 }

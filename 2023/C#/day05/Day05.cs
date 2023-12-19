@@ -24,7 +24,7 @@ readonly struct Range(uint Start, uint Source, uint Length)
     }
 }
 
-static partial class Day5
+static partial class Day05
 {
     static uint[] ExtractSeeds(string input)
     {

@@ -13,7 +13,7 @@ struct Game(int id, Cubes cubes)
     public Cubes Cubes { get; set; } = cubes;
 }
 
-static partial class Day2
+static partial class Day02
 {
     private static readonly Dictionary<string, int> rules = new()
     {
@@ -91,8 +91,8 @@ static partial class Day2
 
         foreach (string line in inputs)
         {
-            Game game = Day2.ParseGame(line);
-            bool isValid = Day2.IsValidGame(game);
+            Game game = Day02.ParseGame(line);
+            bool isValid = Day02.IsValidGame(game);
 
             if (isValid)
             {
@@ -115,7 +115,7 @@ static partial class Day2
 
         foreach (string line in inputs)
         {
-            Game game = Day2.ParseGame(line);
+            Game game = Day02.ParseGame(line);
             count += CalcPower(game);
         }
 

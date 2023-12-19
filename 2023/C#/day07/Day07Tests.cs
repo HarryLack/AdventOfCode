@@ -4,7 +4,7 @@ namespace Day7Tests
 {
 
     [TestClass]
-    public class Day7Tests
+    public class Day07Tests
     {
         readonly static string testInput = "32T3K 765\r\nT55J5 684\r\nKK677 28\r\nKTJJT 220\r\nQQQJA 483";
         readonly static string[] arrayedTestInput = ["32T3K 765", "T55J5 684", "KK677 28", "KTJJT 220", "QQQJA 483"];
@@ -37,25 +37,25 @@ namespace Day7Tests
         [TestMethod]
         public void GetsCorrectPart1()
         {
-            Assert.AreEqual(Day7.Part1(arrayedTestInput), part1Result);
+            Assert.AreEqual(Day07.Part1(arrayedTestInput), part1Result);
         }
 
         [TestMethod]
         public void Part1Reddit()
         {
-            Assert.AreEqual(Day7.Part1(arrayedRedditTestCase), 6592);
+            Assert.AreEqual(Day07.Part1(arrayedRedditTestCase), 6592);
         }
 
         [TestMethod]
         public void GetsCorrectPart2()
         {
-            Assert.AreEqual(Day7.Part2(arrayedTestInput), part2Result);
+            Assert.AreEqual(Day07.Part2(arrayedTestInput), part2Result);
         }
 
         [TestMethod]
         public void Part2Reddit()
         {
-            Assert.AreEqual(Day7.Part2(arrayedRedditTestCase), 6839);
+            Assert.AreEqual(Day07.Part2(arrayedRedditTestCase), 6839);
         }
     }
 }

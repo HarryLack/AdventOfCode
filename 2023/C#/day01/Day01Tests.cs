@@ -4,7 +4,7 @@ namespace Day1Tests
 {
 
     [TestClass]
-    public class Day1Tests
+    public class Day01Tests
     {
         readonly static string[] testInputPart1 = ["1abc2",
             "pqr3stu8vwx",
@@ -30,7 +30,7 @@ namespace Day1Tests
         {
             for (int i = 0; i < testInputPart1.Length; i++)
             {
-                Assert.AreEqual(Day1.ExtractDigits(testInputPart1[i]), testResultsPart1[i]);
+                Assert.AreEqual(Day01.ExtractDigits(testInputPart1[i]), testResultsPart1[i]);
             }
         }
 
@@ -39,7 +39,7 @@ namespace Day1Tests
         {
             for (int i = 0; i < testInputPart1.Length; i++)
             {
-                Assert.AreEqual(Day1.ExtractNumbers(testInputPart2[i]), testResultsPart2[i]);
+                Assert.AreEqual(Day01.ExtractNumbers(testInputPart2[i]), testResultsPart2[i]);
             }
         }
     }

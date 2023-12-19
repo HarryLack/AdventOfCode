@@ -13,7 +13,7 @@ enum HandType
     HighCard, Pair, TwoPair, ThreeKind, FullHouse, FourKind, FiveKind
 }
 
-static partial class Day7
+static partial class Day07
 {
     static CamelGame[] ExtractGames(string[] input)
     {

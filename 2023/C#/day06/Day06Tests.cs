@@ -4,7 +4,7 @@ namespace Day6Tests
 {
 
     [TestClass]
-    public class Day6Tests
+    public class Day06Tests
     {
         readonly static string testInput = "Time:      7  15   30\r\nDistance:  9  40  200";
         readonly static string[] arrayedTestInput = [
@@ -18,13 +18,13 @@ namespace Day6Tests
         [TestMethod]
         public void GetsCorrectPart1()
         {
-            Assert.AreEqual(Day6.Part1(arrayedTestInput), part1Result);
+            Assert.AreEqual(Day06.Part1(arrayedTestInput), part1Result);
         }
 
         [TestMethod]
         public void GetsCorrectPart2()
         {
-            Assert.AreEqual(Day6.Part2(arrayedTestInput), part2Result);
+            Assert.AreEqual(Day06.Part2(arrayedTestInput), part2Result);
         }
     }
 }
