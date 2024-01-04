@@ -44,5 +44,24 @@
 
         return LCM(input[0], LCM(input.Skip(1).ToArray()));
     }
+
+    public static char[][] StringArrayToCharArrayArray(string[] input)
+    {
+        List<char[]> rows = [];
+
+        foreach (var line in input)
+        {
+            List<char> row = [];
+
+            foreach (var ch in line)
+            {
+                row.Add(ch);
+            }
+
+            rows.Add([.. row]);
+        }
+
+        return [.. rows];
+    }
 }
 

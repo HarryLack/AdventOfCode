@@ -42,3 +42,12 @@ Tried far too long to brute force before accepting LCM
 
 Added LCM bits to helpers
 
+### Day 9
+
+Looping, appending, and prepending
+
+### Day 10
+
+Spent far too long trying to be clever with bit comparisons
+
+Part 1: Weird inverse Djikstra-esque flood fill

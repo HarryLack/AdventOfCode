@@ -2,14 +2,13 @@
 
 namespace Day10Tests
 {
-
     [TestClass]
-    public class Day10Tests
+    public class Tests
     {
-        readonly static string testInput = "";
-        readonly static string[] arrayedTestInput = [];
+        readonly static string testInput = "..F7.\r\n.FJ|.\r\nSJ.L7\r\n|F--J\r\nLJ...";
+        readonly public static string[] arrayedTestInput = ["..F7.",".FJ|.","SJ.L7","|F--J","LJ..."];
 
-        readonly static int part1Result = 0;
+        readonly static int part1Result = 8;
         readonly static int part2Result = 0;
 
         [TestMethod]

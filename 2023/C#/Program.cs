@@ -1,6 +1,5 @@
 ﻿internal class Program
 {
-
     private static void Main()
     {
         //Day1.Answer();
@@ -11,6 +10,7 @@
         //Day6.Answer();
         //Day7.Answer();
         //Day8.Answer();
-        Day09.Answer();
+        //Day09.Answer();
+        Day10.Answer();
     }
 }
