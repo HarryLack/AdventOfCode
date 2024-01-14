@@ -1,13 +1,13 @@
  using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DayNTests
+namespace AoC.dayN
 {
 
     [TestClass]
-    public class Day10Tests
+    public class Tests
     {
         readonly static string testInput = "";
-        readonly static string[] arrayedTestInput = [];
+        public readonly static string[] arrayedTestInput = [];
 
         readonly static int part1Result = 0;
         readonly static int part2Result = 0;
@@ -15,13 +15,13 @@ namespace DayNTests
         [TestMethod]
         public void GetsCorrectPart1()
         {
-            Assert.AreEqual(DayN.Part1(arrayedTestInput), part1Result);
+            Assert.AreEqual(Main.Part1(arrayedTestInput), part1Result);
         }
 
         [TestMethod]
         public void GetsCorrectPart2()
         {
-            Assert.AreEqual(DayN.Part2(arrayedTestInput), part2Result);
+            Assert.AreEqual(Main.Part2(arrayedTestInput), part2Result);
         }
     }
 }
