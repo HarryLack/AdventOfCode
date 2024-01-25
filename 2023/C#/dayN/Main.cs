@@ -2,8 +2,6 @@
 {
     static partial class Main
     {
-
-        readonly static string[] arrayedTestInput = [];
         public static int Part1(string[] input)
         {
             int count = 0;
