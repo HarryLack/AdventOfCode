@@ -171,7 +171,7 @@ static partial class Day10
 
     public static int Part1(string[] input)
     {
-        char[][] map = Helpers.StringArrayToCharArrayArray(input);
+        char[][] map = Utils.Cast.StringArrayToCharArrayArray(input);
         Coord start = FindStart(map);
 
         Dictionary<Coord, int> filled = FloodFill(start, map);
@@ -187,7 +187,7 @@ static partial class Day10
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 10!");
-        string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\Day10.txt");
+        string[] input = Utils.File.ReadAsArray(@"..\..\..\..\inputs\Day10.txt");
         Console.WriteLine("My Part 1 result is " + Part1(input));
         Console.WriteLine("My Part 2 result is " + Part2(Day10Tests.Tests.arrayedTestInput));
     }

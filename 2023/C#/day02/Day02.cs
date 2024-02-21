@@ -87,7 +87,7 @@ static partial class Day02
     static int Part1()
     {
         int count = 0;
-        string[] inputs = Helpers.ReadAsArray(@"..\..\..\..\inputs\day2.txt");
+        string[] inputs = Utils.File.ReadAsArray(@"..\..\..\..\inputs\day2.txt");
 
         foreach (string line in inputs)
         {
@@ -111,7 +111,7 @@ static partial class Day02
     static int Part2()
     {
         int count = 0;
-        string[] inputs = Helpers.ReadAsArray(@"..\..\..\..\inputs\day2.txt");
+        string[] inputs = Utils.File.ReadAsArray(@"..\..\..\..\inputs\day2.txt");
 
         foreach (string line in inputs)
         {

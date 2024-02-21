@@ -255,7 +255,7 @@ namespace AoC.day11
             int count = 0;
 
             // Find length of paths
-            var filled = FloodFill(start.Item2, Helpers.StringArrayToCharArrayArray(universe));
+            var filled = FloodFill(start.Item2, Utils.Cast.StringArrayToCharArrayArray(universe));
             foreach (var (i, v) in targets)
             {
                 count += filled[v];
@@ -311,7 +311,7 @@ namespace AoC.day11
         public static void Answer()
         {
             Console.WriteLine("Hello, Day 11!");
-            string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\day11.txt");
+            string[] input = Utils.File.ReadAsArray(@"..\..\..\..\inputs\day11.txt");
             Console.WriteLine("My Part 1 result is " + Part1(input));
             Console.WriteLine("My Part 2 result is " + Part2(input, 1_000_000));
         }

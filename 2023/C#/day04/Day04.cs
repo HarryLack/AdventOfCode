@@ -73,7 +73,7 @@ static partial class Day04
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 4!");
-        string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\day4.txt");
+        string[] input = Utils.File.ReadAsArray(@"..\..\..\..\inputs\day4.txt");
         Console.WriteLine("My Part 1 result is " + Part1(input));
         Console.WriteLine("My Part 2 result is " + Part2(input));
     }

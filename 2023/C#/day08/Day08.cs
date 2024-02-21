@@ -141,13 +141,13 @@ static partial class Day08
             loops.Add(FindLoop(instructions, map, node));
         }
 
-        count = Helpers.LCM(loops.Select(loop => (ulong)loop.loopSize).ToArray());
+        count = Utils.Maths.LCM(loops.Select(loop => (ulong)loop.loopSize).ToArray());
         return count;
     }
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 8!");
-        string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\Day8.txt");
+        string[] input = Utils.File.ReadAsArray(@"..\..\..\..\inputs\Day8.txt");
         Console.WriteLine("My Part 1 result is " + Part1(input));
         Console.WriteLine("My Part 2 result is " + Part2(input));
     }

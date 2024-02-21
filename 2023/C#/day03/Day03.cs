@@ -139,7 +139,7 @@ static partial class Day03
                 count += nParts[0].PartID * nParts[1].PartID;
             }
 
-            // check neighbours
+            // increment neighbours
             // if n == 2 calc ratio
             // else false
         }
@@ -236,7 +236,7 @@ static partial class Day03
     public static void Answer()
     {
         Console.WriteLine("Hello, Day 3!");
-        string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\day3.txt");
+        string[] input = Utils.File.ReadAsArray(@"..\..\..\..\inputs\day3.txt");
         Console.WriteLine("My Part 1 result is " + Part1(input));
         Console.WriteLine("My Part 2 result is " + Part2(input));
     }

@@ -17,7 +17,7 @@
         public static void Answer()
         {
             Console.WriteLine("Hello, Day N!");
-            string[] input = Helpers.ReadAsArray(@"..\..\..\..\inputs\dayN.txt");
+            string[] input = Utils.File.ReadAsArray(@"..\..\..\..\inputs\dayN.txt");
             Console.WriteLine("My Part 1 result is " + Part1(input));
             Console.WriteLine("My Part 2 result is " + Part2(input));
         }
