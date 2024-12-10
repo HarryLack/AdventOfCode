@@ -7,6 +7,7 @@ import (
 	"aoc-2024/day04"
 	"aoc-2024/day05"
 	"aoc-2024/day06"
+	"aoc-2024/day07"
 	"fmt"
 	"time"
 )
@@ -30,6 +31,9 @@ func main() {
 	fmt.Printf("=== %v ===\n", time.Since(prev))
 	prev = time.Now()
 	day6.Solve()
+	fmt.Printf("=== %v ===\n", time.Since(prev))
+	prev = time.Now()
+	day7.Solve()
 	fmt.Printf("=== %v ===\n", time.Since(prev))
 	prev = time.Now()
 
