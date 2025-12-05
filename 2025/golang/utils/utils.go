@@ -1,5 +1,21 @@
 package utils
 
+type Range struct {
+	Start int
+	End   int
+}
+
+type Coord struct {
+	X int
+	Y int
+}
+
+var Neighbours = [8]Coord{
+	{-1, -1}, {0, -1}, {1, -1},
+	{-1, 0} /*{0,0},*/, {1, 0},
+	{-1, 1}, {0, 1}, {1, 1},
+}
+
 func Abs(num int) int {
 	if num < 0 {
 		return -num
