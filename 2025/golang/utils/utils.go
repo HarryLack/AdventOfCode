@@ -37,3 +37,20 @@ func AppendByte(slice []byte, data ...byte) []byte {
 	copy(slice[m:n], data)
 	return slice
 }
+
+func ChunkByValue[S ~[]E, E comparable](s S, v E) []S {
+	ret := []S{}
+	cur := S{}
+	for _, val := range s {
+		if val == v {
+			ret = append(ret, cur)
+			cur = S{}
+		} else {
+			cur = append(cur, val)
+		}
+	}
+	if len(cur) > 0 {
+		ret = append(ret, cur)
+	}
+	return ret
+}
