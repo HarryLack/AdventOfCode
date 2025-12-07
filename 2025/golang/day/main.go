@@ -1,4 +1,4 @@
-package utils
+package day
 
 import (
 	"aoc-2025/input"
@@ -32,7 +32,7 @@ func Solve() {
 	reader2 := input.InputDay(-1)
 	lines2 := input.AsLines(reader2)
 
-	println("=== Day 2 ===")
+	println("=== Day X ===")
 	start := time.Now()
 	prev := start
 	fmt.Printf("Part1: %v \n", part1(lines, false))

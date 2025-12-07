@@ -7,6 +7,7 @@ import (
 	day4 "aoc-2025/day04"
 	day5 "aoc-2025/day05"
 	day6 "aoc-2025/day06"
+	day7 "aoc-2025/day07"
 	"fmt"
 	"os"
 	"time"
@@ -36,6 +37,9 @@ func main() {
 		case "6":
 			day6.Solve()
 			fmt.Printf("=== %v ===\n", time.Since(start))
+		case "7":
+			day7.Solve()
+			fmt.Printf("=== %v ===\n", time.Since(start))
 		}
 	} else {
 		prev := start
@@ -55,6 +59,9 @@ func main() {
 		fmt.Printf("=== %v ===\n", time.Since(prev))
 		prev = time.Now()
 		day6.Solve()
+		fmt.Printf("=== %v ===\n", time.Since(prev))
+		prev = time.Now()
+		day7.Solve()
 		fmt.Printf("=== %v ===\n", time.Since(prev))
 		prev = time.Now()
 	}
